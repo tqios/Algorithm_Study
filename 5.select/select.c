@@ -49,22 +49,10 @@ int select(int A[], int p, int r, int i){
 
 }
 
-void quick_sort(int list[], int left, int right){
-    if(left<right){
-        int q= partition(list, left, right);
-        quick_sort(list, left, q-1);
-        quick_sort(list, q+1, right);
-    }
-}
-
 int main(void){
     int list[] = {8,6,1,4,9,7,3,5,0,2};
-    int selected = select(list,0,9,10);
+    int selected = select(list,0,9,3);
     printf("%d", selected);
-    // quick_sort(list, 0, 9);
-    // for(int i=0; i<10; i++){
-    //     printf("%d ", list[i]);
-    // }
     printf("\n");
     return 0;
 }
