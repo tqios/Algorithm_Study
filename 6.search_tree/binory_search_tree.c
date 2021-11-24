@@ -21,7 +21,8 @@ TreeNode *insert(int data, TreeNode *node){
     C++;
     
     if(node==NULL){
-        ans[a++]=C--;
+        C--;
+        ans[a++]=C;
         return new_node(data);
         
     }
