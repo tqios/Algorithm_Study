@@ -1,0 +1,51 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int count = 0;
+
+typedef struct BinaryTreeNode {
+    int data;
+    struct BinaryTreeNode* left, * right;
+} TreeNode;
+
+TreeNode *Create(int X) {
+    TreeNode *newnode = (TreeNode*)malloc(sizeof(TreeNode));
+    newnode->data = X;
+    newnode->left = NULL;
+    newnode->right = NULL;
+    return newnode;
+}
+
+TreeNode *insert(int X, TreeNode* node) {
+    count++;
+    if (node == NULL) {
+        count--;
+        node = Create(X);
+    }
+    else if (X < node->data) {
+        if (node->left == NULL)
+            node->left = Create(X);
+        else
+            node->left = insert(X, node->left);
+    }
+    else {
+        if (node->right == NULL)
+            node->right = Create(X);
+        else
+            node->right = insert(X, node->right);
+    }
+    return node;
+}
+
+int main()
+{
+    int N, number;
+    TreeNode* tree = NULL;
+    scanf_s("%d", &N);
+
+    for (int i = 0;i < N;i++) {
+        scanf_s("%d", &number);
+        tree=insert(number, tree);
+        printf("%d", count);
+    }
+}
